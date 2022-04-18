@@ -1,8 +1,19 @@
+import React  from "react";
 import ExpenseItem from './components/ExpenseItem';
 import Card from './components/card';
-import React  from "react";
 import Sdata from './components/listCard';
-console.log(Sdata[0]);
+
+
+// function ncard(val){
+//     return(
+//         <Card
+//        imgscr={val.imgscr}
+//        title={val.title}
+//        sname={val.sname}
+//        link={val.link} 
+//       />
+//     );
+// }
 
 function App(){
     let expenseDate = new  Date(2022, 4, 18);
@@ -35,7 +46,7 @@ function App(){
        link="https://www.netflix.com/in/title/80990668?source=35"
        /> */}
 
-      <Card
+      {/* <Card
        imgscr={Sdata[0].imgscr}
        title={Sdata[0].title}
        sname={Sdata[0].sname}
@@ -52,9 +63,39 @@ function App(){
        title={Sdata[2].title}
        sname={Sdata[2].sname}
        link={Sdata[2].link} 
-      />
+      /> */}
 
+      {/* {Sdata.map(function(val){
+           return(
+            <Card
+           imgscr={val.imgscr}
+           title={val.title}
+           sname={val.sname} 
+           link={val.link} 
+          />
+        );
+      })} */}
+
+{Sdata.map((val) =>{
+           return(
+            <Card
+           imgscr={val.imgscr}
+           title={val.title}
+           sname={val.sname} 
+           link={val.link} 
+          />
+        );
+           })}
     </div>
 }
 
 export default App;
+
+
+// ---------------- sample
+function myfun(){
+
+}
+const myjay = (vinod) =>{
+
+}
