@@ -54,9 +54,7 @@ p{
 }
 
 @media (min-width:568px){
-    .expense-item__description{
-       
-    }
+    
     .expense-item__h1{
         font-size: 1.25rem;
     }
