@@ -10,12 +10,14 @@ const Home = () => {
 
     useEffect(() => {
         loadUsers();
+        // console.log("gfsgfdsag")
     }, []);
 
 
     const loadUsers = async () => {
         const result = await axios.get("http://localhost:3001/users");
         setUser(result.data);
+        // console.log("gfsgfdsag")
     }
 
     return (

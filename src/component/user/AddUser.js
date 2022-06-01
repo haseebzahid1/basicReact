@@ -1,30 +1,31 @@
-import axios from 'axios'
 import React, { useState } from 'react'
-import {useHistory,Link } from "react-router-dom";
+import {Link } from "react-router-dom";
+// import {useHistory } from "react-router-dom";
+import axios from 'axios'
 
 
 
 const AddUser = () => {
-    var history = useHistory();
-    const [user, setUser] = useState({
+    // let history = useHistory();
+    let [user, setUser] = useState({
         
-        firstName: '',
-        username: '',
-        email: '',
-        phone: '',
-        website: '',
+        firstName: "",
+        username: "",
+        email: "",
+        phone: "",
+        website: "",
     });
 
   const {firstName,userName,email,phone,website} = user;
 
     const onInputChange = e => {
-        setUser({...user, [e.target.firstName]:e.target.value});
+        setUser({...user, [e.target.firstName]: e.target.value});
     };
 
     const onSubmit = async e => {
         e.preventDefault();
         await axios.post("http://localhost:3001/users" , user);
-        history.push("/home");
+        // history.push("/home");
     };
 
     return (
