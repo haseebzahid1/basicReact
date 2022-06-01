@@ -9,16 +9,15 @@ const Home = () => {
     const [users, setUser] = useState([]);
 
     useEffect(() => {
-        loadUsers();
-        // console.log("gfsgfdsag")
+      loadUsers();
     }, []);
-
-
+  
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:3001/users");
-        setUser(result.data);
-        // console.log("gfsgfdsag")
-    }
+      const result = await axios.get("http://localhost:3001/users");
+      setUser(result.data.reverse());
+    };
+  
+   
 
     return (
         <div className='container'>
