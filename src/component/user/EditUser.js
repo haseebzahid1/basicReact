@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios'
 
 
 
-const AddUser = () => {
+
+const EditUser = () => {
     let history = useNavigate();
+    const { id } = useParams();
     let [user, setUser] = useState({
 
         name: "",
@@ -21,14 +23,23 @@ const AddUser = () => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
 
+    useEffect(() => {
+        loadUsers();
+    }, []);
+
     const onSubmit = async e => {
         e.preventDefault();
         await axios.post("http://localhost:3001/users", user);
         history('/');
     };
 
+    const loadUsers = async () => {
+        const result = await axios.get(`http://localhost:3001/users/${id}`);
+        setUser(result.data);
+    }
 
-    
+
+
     return (
         <div className='container'>
             <div className='w-75 mx-auto shadow p-5'>
@@ -77,11 +88,11 @@ const AddUser = () => {
                     </div>
 
                     {/* <Link to='/' className='btn btn-primary btn-block'>Add User</Link> */}
-                    <button className="btn btn-primary btn-block">Add User</button>
+                    <button className="btn btn-warning btn-block w-100">Apdate User</button>
                 </form>
             </div>
         </div>
     )
 }
 
-export default AddUser
+export default EditUser

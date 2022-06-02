@@ -14,10 +14,14 @@ const Home = () => {
   
     const loadUsers = async () => {
       const result = await axios.get("http://localhost:3001/users");
-      setUser(result.data.reverse());
+      setUser(result.data);
     };
   
-   
+     
+    const deleteUser = async id => {
+        await axios.delete(`http://localhost:3001/users/${id}`);
+        loadUsers();
+    }
 
     return (
         <div className='container'>
@@ -41,9 +45,9 @@ const Home = () => {
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                <Link to="/" className='btn btn-primary me-2'>View</Link>
-                                <Link to="/" className='btn btn-outline-primary me-2'>Edit</Link>
-                                <Link to="/" className='btn btn-danger'>Delete</Link>
+                                <Link to={`/users/${user.id}`} className='btn btn-primary me-2'>View</Link>
+                                <Link to={`/users/edit/${user.id}`} className='btn btn-outline-primary me-2'>Edit</Link>
+                                <Link to="/" className='btn btn-danger' onClick={()=> deleteUser(user.id)}>Delete</Link>
                                 </td>
                             </tr>
                         ))}
